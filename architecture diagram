@@ -1,0 +1,97 @@
+---
+config:
+  theme: mc
+  layout: dagre
+  look: neo
+---
+flowchart TB
+ subgraph subGraph0["Data Sources Layer"]
+        DS["Data Stream"]
+        A["Parking Sensors<br>Real-time Occupancy"]
+        B["Traffic API<br>Current Conditions"]
+        C["Event Calendar<br>Special Events"]
+        D["Weather API<br>Weather Impact"]
+        E["GPS Coordinates<br>Location Data"]
+  end
+ subgraph subGraph1["Data Ingestion Processing"]
+        F["CSV Data Stream<br>pathway.demo.replay_csv"]
+        G["Schema Validation<br>ComprehensiveParkingSchema"]
+        H["Data Preprocessing<br>Feature Engineering"]
+        I["Timestamp Processing<br>dt.strptime"]
+  end
+ subgraph subGraph2["Model Details"]
+        J1["Previous Price Storage<br>State Management"]
+        J["Baseline Linear Model<br>Price equals Base plus Alpha times Occupancy"]
+        K1["Weight Calculation<br>Occupancy 40 percent<br>Queue 30 percent<br>Traffic 20 percent<br>Events 10 percent"]
+        K["Demand-Based Model<br>Multi-factor Weighted Analysis"]
+        L1["Haversine Distance<br>Competitor Analysis"]
+        L["Competitive Pricing Model<br>Location-based Competition"]
+  end
+ subgraph subGraph3["Pricing Models Engine"]
+        subGraph2
+  end
+ subgraph subGraph4["Real-time Processing Engine"]
+        M["Pathway Transformations<br>pw.with_columns"]
+        N["Bounds Checking<br>0.5x to 2x Base Price"]
+        O["Windowed Aggregations<br>Tumbling Windows 1 hour"]
+        P["Statistical Reducers<br>avg max min"]
+  end
+ subgraph subGraph5["Analytics and Metrics"]
+        Q["Performance Metrics<br>Revenue Volatility Utilization"]
+        R["KPI Calculations<br>ROI Efficiency Scores"]
+        S["Comparative Analysis<br>Model Performance"]
+  end
+ subgraph subGraph6["Visualization Layer"]
+        T["Bokeh Plotting<br>Interactive Charts"]
+        U["Price Comparison Plots<br>Real-time Updates"]
+        V["Occupancy Monitoring<br>Space Utilization"]
+        W["Revenue Analysis<br>Financial Performance"]
+        X["Panel Dashboard<br>Web Interface"]
+  end
+ subgraph subGraph7["Output and Integration"]
+        Y["Interactive Web Dashboard<br>Real-time Visualization"]
+        Z1["Price Display Systems<br>Digital Boards"]
+        Z2["Mobile App Integration<br>Customer Interface"]
+        Z3["Payment Systems<br>Dynamic Pricing"]
+        Z4["Analytics Reports<br>Performance Reports"]
+        Z5["Data Export<br>CSV JSON Output"]
+  end
+ subgraph subGraph8["External Systems"]
+        EXT1["Parking Management<br>System Integration"]
+        EXT2["Customer Mobile Apps<br>Real-time Pricing"]
+        EXT3["Payment Gateways<br>Transaction Processing"]
+  end
+    A --> DS
+    B --> DS
+    C --> DS
+    D --> DS
+    E --> DS
+    DS --> F
+    F --> G
+    G --> H
+    H --> I
+    I --> J & K & L
+    J --> J1 & M
+    K --> K1 & M
+    L --> L1 & M
+    M --> N
+    N --> O
+    O --> P
+    P --> Q
+    Q --> R
+    R --> S
+    S --> T & Z4 & Z5
+    T --> U & V & W
+    U --> X
+    V --> X
+    W --> X
+    X --> Y
+    Y --> Z1 & Z2 & Z3
+    Z1 --> EXT1
+    Z2 --> EXT2
+    Z3 --> EXT3
+    style DS fill:#e3f2fd
+    style M fill:#f3e5f5
+    style Q fill:#fff3e0
+    style X fill:#e8f5e8
+    style Y fill:#fce4ec
